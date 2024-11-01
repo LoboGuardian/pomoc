@@ -52,13 +52,14 @@ static void start_timer(GtkWidget *widget, gpointer user_data) {
 static void pause_timer(GtkWidget *widget, gpointer user_data) {
     if (timer_running) {
         timer_paused = TRUE;
-        timer_paused = FALSE;
+        // timer_paused = FALSE;
     }
 }
 
 static void activate(GtkApplication *app, gpointer user_data) {
     GtkWidget *window;
     GtkWidget *vbox;
+    GtkWidget *hbox;
     GtkWidget *start_button;
     GtkWidget *pause_button;
 
@@ -71,7 +72,7 @@ static void activate(GtkApplication *app, gpointer user_data) {
 
     timer_label = gtk_label_new("25:00");
     gtk_box_pack_start(GTK_BOX(vbox), timer_label, TRUE, TRUE, 0);
-
+    
     start_button = gtk_button_new_with_label("Start");
     g_signal_connect(start_button, "clicked", G_CALLBACK(start_timer), NULL);
     gtk_box_pack_start(GTK_BOX(vbox), start_button, TRUE, TRUE, 0);
